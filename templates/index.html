@@ -2,7 +2,7 @@
 <html >
 <head>
   <meta charset="UTF-8">
-  <title>Medical Cannabis Strain Recommender App</title>
+  <title>Home Prices predicting app</title>
   <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
@@ -11,30 +11,36 @@
   
 </head>
 
-<body style="background: #FFFFFF;">
+<body style="background: #000;">
  <div class="login">
-    <h1>Medical Cannabis Strain Recommender App</h1>
-    <h2>Stephen, Bhavneesh and Ashley: DSPT3: Lambda School</h1>
-    
+	<h1>Home Prices predicting app</h1>
+	<h2>Created by Bhavneesh Sharma: DSPT3, Lambda School</h1>
 
      <!-- Main Input For Receiving Query to our ML -->
     <form action="{{ url_for('predict')}}"method="post">
-
-		<input type="text" name="query" placeholder="Enter your query here with ailement and desired geographical origin of the strain | Specify taste, aroma and effect needed." required="required" size=120/>
-
-
-        <button type="submit" class="btn btn-primary btn-block btn-large">Submit</button>
+    	<input type="text" name="Overall quality" placeholder="Overall quality (1-10)" required="required" />
 	<br>
-	<img src="https://images.barrons.com/im-152667?width=620&size=1.5" alt="Medical cannbis">
+        <input type="text" name="Ground floor living area in square feet" placeholder="Ground floor living area in square feet" required="required" />
+	<br>
+	<input type="text" name="Basement size in square feet" placeholder="Basement size in square feet" required="required" />
+	<br>
+	<input type="text" name="First floor size in square feet" placeholder="First floor size in square feet" required="required" />
+	<br>
+        <input type="text" name="Garage Area in square feet" placeholder="Garage Area in square feet" required="required" />
+	<br>
+	<input type="text" name="Number of cars in garage" placeholder="Number of cars in garage" required="required" />
+	<br>
+	<input type="text" name="Lot Area" placeholder="Lot Area" required="required" />
+	<br>
+	<input type="text" name="Home age in years" placeholder="Home age in years" required="required" />
+	<br>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Get Home price prediction</button>
     </form>
 
    <br>
    <br>
-	
    {{ prediction_text }}
 
  </div>
-
-
 </body>
 </html>
