@@ -33,12 +33,12 @@ def create_app():
     @app.route('/results',methods=['POST'])
     def results():
 
-    data = request.get_json(force=True)
-    model = joblib.load(open('ameshousing_model.pkl', 'rb'))
-    prediction = model.predict([np.array(list(data.values()))])
+        data = request.get_json(force=True)
+        model = joblib.load(open('ameshousing_model.pkl', 'rb'))
+        prediction = model.predict([np.array(list(data.values()))])
 
-    output = prediction[0]
-    return jsonify(output)
+        output = prediction[0]
+        return jsonify(output)
         
     return app
 
