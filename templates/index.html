@@ -20,19 +20,19 @@
     <form action="{{ url_for('predict')}}"method="post">
     	<input type="text" name="Overall quality" placeholder="Overall quality (1-10)" required="required" />
 	<br>
-        <input type="text" name="Ground floor living area in square feet" placeholder="Ground floor living area in square feet" required="required" />
+        <input type="text" name="Ground floor living area in square feet" placeholder="Ground floor living area in square feet" required="required" size=50 />
 	<br>
-	<input type="text" name="Basement size in square feet" placeholder="Basement size in square feet" required="required" />
+	<input type="text" name="Basement size in square feet" placeholder="Basement size in square feet" required="required" size=50 />
 	<br>
-	<input type="text" name="First floor size in square feet" placeholder="First floor size in square feet" required="required" />
+	<input type="text" name="First floor size in square feet" placeholder="First floor size in square feet" required="required" size=50 />
 	<br>
-        <input type="text" name="Garage Area in square feet" placeholder="Garage Area in square feet" required="required" />
+        <input type="text" name="Garage Area in square feet" placeholder="Garage Area in square feet" required="required" size=50 />
 	<br>
-	<input type="text" name="Number of cars in garage" placeholder="Number of cars in garage" required="required" />
+	<input type="text" name="Number of cars in garage" placeholder="Number of cars in garage" required="required" size=50 />
 	<br>
-	<input type="text" name="Lot Area" placeholder="Lot Area" required="required" />
+	<input type="text" name="Lot Area" placeholder="Lot Area" required="required" size=50 />
 	<br>
-	<input type="text" name="Home age in years" placeholder="Home age in years" required="required" />
+	<input type="text" name="Home age in years" placeholder="Home age in years" required="required" size=50 />
 	<br>
         <button type="submit" class="btn btn-primary btn-block btn-large">Get Home price prediction</button>
     </form>
