@@ -4,13 +4,14 @@ import joblib
 import json
 import numpy as np
 import requests
+import pandas as pd
 
 #https://www.kdnuggets.com/2019/10/easily-deploy-machine-learning-models-using-flask.html
 
 app = Flask(__name__)
 
 def create_app():
-    model = joblib.load(open('potguide_model.pkl', 'rb'))
+    model = joblib.load(open('ameshousing_model.pkl', 'rb'))
 
 #################APP ROUTES####################
 
@@ -18,38 +19,26 @@ def create_app():
     def home():
         return render_template('index.html')
 
-    @app.route('/predicttest',methods=['POST'])
-    def predicttest():
-
-        str_features = [str(x) for x in request.form.values()]
-        features = [np.array(str_features)]
-
-        data = [np.array(features)]
-        model = joblib.load(open('potguide_model.pkl', 'rb'))
-        #prediction = np.array2string(model.predict(data))
-        prediction = np.array(model.predict(data))
-        #output = round(prediction[0], 2)
-
-        return render_template('index.html', prediction_text='The recommended cannabis strain is {}'.format(prediction))
-
     @app.route('/predict', methods=['POST', 'GET'])
     def predict():
-        model = joblib.load('potguide_model.pkl')
-        d = request.form.values()
-        #data = d.json()
-        prediction = np.array2string(model.predict(d))
-        res = jsonify(prediction)
-        return render_template('index.html', prediction_text='The recommended cannabis strain is {}'.format(prediction))
+        model = joblib.load(open('ameshousing_model.pkl', 'rb'))
+        int_features = [int(x) for x in request.form.values()]
+        final_features = [np.array(int_features)]
+        prediction = model.predict(final_features)
+        output = round(prediction[0], 2)
+        return render_template('index.html', prediction_text='The predicted home price is = $ {}'.format(output))
 
 
 
     @app.route('/results',methods=['POST'])
     def results():
 
-        data = request.get_json(force=True)
-        model = joblib.load(open('potguide_model.pkl', 'rb'))
-        prediction = np.array2string(model.predict(data))
-        return jsonify(prediction)
+    data = request.get_json(force=True)
+    model = joblib.load(open('ameshousing_model.pkl', 'rb'))
+    prediction = model.predict([np.array(list(data.values()))])
+
+    output = prediction[0]
+    return jsonify(output)
         
     return app
 
