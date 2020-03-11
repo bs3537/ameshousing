@@ -25,7 +25,7 @@ def create_app():
         int_features = [int(x) for x in request.form.values()]
         final_features = [np.array(int_features)]
         prediction = model.predict(final_features)
-        output = round(prediction[0], 2)
+        output = 2.4 * round(prediction[0])
         return render_template('index.html', prediction_text='The predicted home price is = $ {}'.format(output))
 
 
